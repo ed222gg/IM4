@@ -8,16 +8,22 @@ namespace _2_3_geometriska_figurer
 {
     class Rectangle : Shape
     {
-        //public double Area
-        //{
-        //    get { Length * Width; }
-        //}
+        //Räkna ut rektangelns area
+        public override double Area
+        {
+            get { return Length * Width; }
+        }
 
-        //public double Perimeter { get; }
+        //Räkna ut rektangelns omkrets
+        public override double Perimeter
+        {
+            get { return Length * 2 + Width * 2; }
+        }
 
-        //public Rectangle(double length, double width )
-        //{
-        //    throw new NotImplementedException();
-        //}
+        //Konstruktorn hämtar längd och bredd från Shape
+        public Rectangle(double length, double width)
+            :base(length, width)
+        {
+        }
     }
 }

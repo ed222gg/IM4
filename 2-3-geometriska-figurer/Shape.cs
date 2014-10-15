@@ -6,20 +6,17 @@ using System.Threading.Tasks;
 
 namespace _2_3_geometriska_figurer
 {
+    //Definiera vilka typer av figurer applikationen kan hantera
     enum ShapeType { Ellipse, Rectangle }
 
-    abstract class Shape
+    public abstract class Shape
     {
         //Deklarera fält
         private double _length;
         private double _width;
 
-        ////Egenskaperna Area, Length, Perimeter och Width
-        //public abstract double Area
-        //{
-        //    get { return 0; } //?
-        //}
-
+        //Egenskapen Length kapslar in fältet _length
+        //Om inmatat värde är mindre än 0 kastas undantag
         public double Length
         {
             get { return _length; }
@@ -33,11 +30,8 @@ namespace _2_3_geometriska_figurer
             }
         }
 
-        //public abstract double Perimeter
-        //{ 
-        //    get { return 0; } //?
-        //}
-
+        //Egenskapen Width kapslar in egenskapen _width
+        //Om inmatat värde är mindre än 0 kastas undantag
         public double Width
         {
             get { return _width; }
@@ -51,27 +45,30 @@ namespace _2_3_geometriska_figurer
             }
         }
 
-        ////Metoderna Shape(konstruktorn) och ToString
-        //protected Shape(double length, double width)
-        //{
+        //Egenskapen Area representerar en figurs area
+        public abstract double Area
+        {
+            get;
+        }
 
-        //}
+        //Egenskapen Perimeter representerar en figurs omkrets
+        public abstract double Perimeter
+        {
+            get;
+        }
 
-        //public override string ToString()
-        //{
-        //    //throw new NotImplementedException();
+        //Metoderna Shape(konstruktorn) och ToString
+        protected Shape(double length, double width)
+        {
+            Length = length;
+            Width = width;
+        }
 
-        //    string result;
-
-        //    result = String.Format("Längd   : {0}\nBredd   : {1}\nOmkrets : {2}\nArea    : {3}",
-        //        Length, Width, Perimeter, Area);
-
-        //    return result;
-
-        //    //Console.WriteLine("Längd   : {0}", Length);
-        //    //Console.WriteLine("Bredd   : {0}", Width);
-        //    //Console.WriteLine("Omkrets : {0}", Perimeter);
-        //    //Console.WriteLine("Area    : {0}", Area);
-        //}
+        //Överskugga basklassens ToString och skriv ut figurens detalger
+        public override string ToString()
+        {
+            return String.Format("Längd   : {0}\nBredd   : {1}\nOmkrets : {2}\nArea    : {3}\n===========================",
+                Length, Width, Perimeter, Area);
+        }
     }
 }

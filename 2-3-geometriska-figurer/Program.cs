@@ -10,6 +10,7 @@ namespace _2_3_geometriska_figurer
     {
         private static void Main(string[] args)
         {
+            Shape varCreateAdmin;
             do
             {
                 ViewMenu();
@@ -20,11 +21,19 @@ namespace _2_3_geometriska_figurer
                         return;
 
                     case "1":
-                        ViewShapeDetail(CreateShape(ShapeType.Ellipse));
-                      break;
+                        do
+                        {
+                            varCreateAdmin = CreateAdmin(Admin.Reeferee);
+                        }
+                        while (varCreateAdmin == null);
+                        break;
 
                     case "2":
-                        ViewShapeDetail(CreateShape(ShapeType.Rectangle));
+                        do
+                        {
+                            varCreateAdmin = CreateAdmin(Admin.Secretary);
+                        }
+                        while (varCreateAdmin == null);
                         break;
 
                     default:
@@ -39,57 +48,61 @@ namespace _2_3_geometriska_figurer
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
 
-        //Metoden CreateShape skriver ut en header som talar om vilken 
+        //Metoden CreateAdmin skriver ut en header som talar om vilken 
         //typ av form vi har valt att skapa och läser in bredd och längd.
         //När värdena är inmatade skapas ett nytt objekt.
-        private static Shape CreateShape(ShapeType shapeType)
+        private static Shape CreateAdmin(Admin adminType)
         {
-            double width;
-            double length;
+            string userName;
+            string password;
 
             Console.WriteLine();
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("===========================");
             Console.WriteLine("=                         =");
-            Console.WriteLine("= {0,15}         =", shapeType);
+            Console.WriteLine("= {0,15}         =", adminType);
             Console.WriteLine("=                         =");
             Console.WriteLine("===========================");
             Console.WriteLine();
             Console.ResetColor();
 
-            width = ReadDoubleGreaterThanZero("Ange bredd: ");
-            length = ReadDoubleGreaterThanZero("Ange längd: ");
+            userName = LogIn("Ange användarnamn: ");
+            password = LogIn("Ange Lösenord: ");
 
-            switch (shapeType)
+
+            try
             {
-                case ShapeType.Ellipse:
-                    return new Ellipse(width, length);
+                switch (adminType)
+                {
+                    case Admin.Reeferee:
+                        return new Referee(userName, password);
 
-                case ShapeType.Rectangle:
-                    return new Rectangle(width, length);
+                    case Admin.Secretary:
+                        return new Secretary(userName, password);
 
-                default:
-                    throw new ApplicationException();
+                    default:
+                        throw new ApplicationException();
+                }
             }
+            catch (ArgumentException)
+            {
+                ViewErrorMessage("Du angav fel användarnamn eller lösenord");
+                // Kalla på användare/lösenord igen.
+
+                return null;
+
+                // print("exception caught " + ex.toString();
+            }
+
         }
+
+
+
 
         //Metoden ReadGreaterThanZero kontrollerar att värdet för längd/bredd
         //är större än noll. Om inte visas ett felmeddelande och man får en ny chans.
-        private static double ReadDoubleGreaterThanZero(string prompt)
-        {
-            double input;
 
-            do
-            {
-                Console.Write(prompt);
-                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
-                {
-                    return input;
-                }
-                ViewErrorMessage("Fel! Ange ett flyttal större än 0.");
-            } while (true);
-        }
 
         //Metod som skriver programmets huvudmeny.
         private static void ViewMenu()
@@ -99,29 +112,44 @@ namespace _2_3_geometriska_figurer
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("===========================");
             Console.WriteLine("=                         =");
-            Console.WriteLine("=   Geometriska figurer   =");
+            Console.WriteLine("=      Välj användare     =");
             Console.WriteLine("=                         =");
             Console.WriteLine("===========================");
             Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine("0. Avsluta");
-            Console.WriteLine("1. Ellips");
-            Console.WriteLine("2. Reklangel");
+            Console.WriteLine("1. Domare");
+            Console.WriteLine("2. Sekreterare");
             Console.WriteLine();
             Console.WriteLine("===========================");
             Console.WriteLine();
             Console.Write("Ange menyval 0-2: ");
         }
 
-        //Skriv ut "detalj-header" och hämta detaljer via ToString i klassen Shape.
-        private static void ViewShapeDetail(Shape shape)
+        private static string LogIn(string prompt)
         {
-            Console.WriteLine(); 
+
+
+
+            Console.Write(prompt);
+            string userName = Console.ReadLine();
+
+
+
+            return userName;
+
+        }
+
+
+        //Skriv ut "detalj-header" och hämta detaljer via ToString i klassen Shape.
+        private static void LogIn(Shape shape)
+        {
+            Console.WriteLine();
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("===========================");
             Console.WriteLine("=                         =");
-            Console.WriteLine("=         Detaljer        =");
+            Console.WriteLine("=         Inloggad        =");
             Console.WriteLine("=                         =");
             Console.WriteLine("===========================");
             Console.ResetColor();

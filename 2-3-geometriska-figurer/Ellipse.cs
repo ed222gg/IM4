@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace _2_3_geometriska_figurer
 {
-    class Ellipse : Shape
+    class Secretary : Shape
     {
-        //Räknar ut elipsens area
-        public override double Area
+        //Räkna ut rektangelns area
+        public override string Area
         {
-            get { return Math.PI * (Length / 2) * (Width / 2); }
+            get { return UserName; }
         }
 
-        //Räknar ut elipsens omkrets
-        public override double Perimeter
+        //Räkna ut rektangelns omkrets
+        public override string Perimeter
         {
-            get { return Math.PI * Math.Sqrt(2 * (Length / 2) * (Length / 2) + 2 * (Width / 2) * (Width / 2)); } 
+            get { return Password; }
         }
 
         //Konstruktorn hämtar längd och bredd från Shape
-        public Ellipse(double length, double width)
-            :base (length, width)
+        public Secretary(string username, string password)
+            : base(username, password)
         {
         }
     }

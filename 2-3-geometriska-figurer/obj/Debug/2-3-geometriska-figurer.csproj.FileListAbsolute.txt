@@ -4,3 +4,9 @@ P:\inledande-programmering-med-csharp\2-3-geometriska-figurer\2-3-geometriska-fi
 P:\inledande-programmering-med-csharp\2-3-geometriska-figurer\2-3-geometriska-figurer\bin\Debug\2-3-geometriska-figurer.pdb
 P:\inledande-programmering-med-csharp\2-3-geometriska-figurer\2-3-geometriska-figurer\obj\Debug\2-3-geometriska-figurer.exe
 P:\inledande-programmering-med-csharp\2-3-geometriska-figurer\2-3-geometriska-figurer\obj\Debug\2-3-geometriska-figurer.pdb
+C:\Users\menta_000\Desktop\temp\IM4\2-3-geometriska-figurer\bin\Debug\2-3-geometriska-figurer.exe.config
+C:\Users\menta_000\Desktop\temp\IM4\2-3-geometriska-figurer\obj\Debug\2-3-geometriska-figurer.exe
+C:\Users\menta_000\Desktop\temp\IM4\2-3-geometriska-figurer\obj\Debug\2-3-geometriska-figurer.pdb
+C:\Users\menta_000\Desktop\temp\IM4\2-3-geometriska-figurer\obj\Debug\2-3-geometriska-figurer.csprojResolveAssemblyReference.cache
+C:\Users\menta_000\Desktop\temp\IM4\2-3-geometriska-figurer\bin\Debug\2-3-geometriska-figurer.exe
+C:\Users\menta_000\Desktop\temp\IM4\2-3-geometriska-figurer\bin\Debug\2-3-geometriska-figurer.pdb
